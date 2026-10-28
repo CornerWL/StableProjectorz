@@ -72,10 +72,14 @@ namespace spz {
 	        _panelGO = new GameObject("RingPanel", typeof(RectTransform), typeof(Image), typeof(VerticalLayoutGroup), typeof(ContentSizeFitter));
 	        var panelRT = (RectTransform)_panelGO.transform;
 	        panelRT.SetParent(_canvasGO.transform, false);
-	        panelRT.anchorMin = new Vector2(0.5f, 1f);
-	        panelRT.anchorMax = new Vector2(0.5f, 1f);
-	        panelRT.pivot = new Vector2(0.5f, 1f);
-	        panelRT.anchoredPosition = new Vector2(0f, -104f);
+	        // Keep the panel out of the middle of the viewport: bottom-left corner,
+	        // just inside the 3D view (the left tool column ends at ~450px in the
+	        // 1920x1080 reference layout). The old top-centre position covered the
+	        // model the user is about to texture.
+	        panelRT.anchorMin = new Vector2(0f, 0f);
+	        panelRT.anchorMax = new Vector2(0f, 0f);
+	        panelRT.pivot = new Vector2(0f, 0f);
+	        panelRT.anchoredPosition = new Vector2(466f, 14f);
 	        panelRT.sizeDelta = new Vector2(412f, 0f);
 
 	        var panelImg = _panelGO.GetComponent<Image>();
