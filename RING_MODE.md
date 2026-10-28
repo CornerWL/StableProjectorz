@@ -41,7 +41,7 @@ viewport status show which view is being generated.
 
 The workflow is `.github/workflows/build-windows.yml`. It builds Unity
 `6000.2.6f2` for `StandaloneWindows64` (Mono) with the method
-`spz.Editor.BuildScript.BuildWindows` and uploads `build/Windows` as an
+`spz.BuildTools.BuildScript.BuildWindows` and uploads `build/Windows` as an
 artifact.
 
 Before the first build, add these repository secrets under

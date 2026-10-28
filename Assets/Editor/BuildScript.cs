@@ -5,7 +5,7 @@ using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
 
-namespace spz.Editor {
+namespace spz.BuildTools {
 
 	// Entry point used by .github/workflows/build-windows.yml (GameCI).
 	public static class BuildScript {
