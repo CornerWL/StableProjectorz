@@ -92,6 +92,11 @@ namespace spz {
 	            null, Tool_RingStart,
 	            readOnly: false, idempotent: false);
 
+	        Add("generate_art", "Fire the Generate button",
+	            "Runs the same path as the main Generate button. With ring mode off this is the original single-image workflow; with ring mode on it starts a ring.",
+	            null, Tool_GenerateArt,
+	            readOnly: false, idempotent: false);
+
 	        Add("ring_cancel", "Cancel a ring generation",
 	            "Ask the running ring sequence to stop and interrupt the current Stable Diffusion request.",
 	            null, Tool_RingCancel,
@@ -331,6 +336,14 @@ namespace spz {
 	            { "consumed_by_ring", consumed },
 	            { "state", RingStateSnapshot() },
 	        });
+	    }
+
+
+	    static void Tool_GenerateArt(JObject prms, Action<object> ok, Action<string> fail){
+	        var hub = StableDiffusion_Hub.instance;
+	        if (hub == null){ fail("StableDiffusion_Hub is not ready yet (scenes still loading)."); return; }
+	        hub.RequestGenerateArt();
+	        ok(RingStateSnapshot());
 	    }
 
 
